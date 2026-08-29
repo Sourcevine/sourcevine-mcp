@@ -11,6 +11,8 @@
     "dist/**/*.js",
     "dist/catalog.json",
     "!dist/**/*.test.js",
+    "!dist/http.js",
+    "!dist/serve.js",
     "README.md",
     "LICENSE"
   ],
