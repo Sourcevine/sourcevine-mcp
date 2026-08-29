@@ -1,0 +1,51 @@
+{
+  "name": "@sourcevine/mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the Sourcevine public social data APIs.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "sourcevine-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/catalog.json",
+    "!dist/**/*.test.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js dist/serve.js",
+    "test": "node --test dist/*.test.js",
+    "prepublishOnly": "npm run build",
+    "start": "node dist/serve.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sourcevine/sourcevine-mcp.git"
+  },
+  "homepage": "https://sourcevine.io/docs/mcp/",
+  "bugs": {
+    "url": "https://github.com/Sourcevine/sourcevine-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "tiktok",
+    "instagram",
+    "youtube",
+    "social-data",
+    "api"
+  ]
+}
