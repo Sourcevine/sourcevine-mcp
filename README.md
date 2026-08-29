@@ -32,7 +32,8 @@ Anything that reads a JSON config:
 }
 ```
 
-The server runs locally, so the key stays on the machine that owns it.
+This runs as a local process. Your key sits in your own environment and is
+sent to `api.sourcevine.io` when a tool is called.
 
 ## Hosted endpoint
 
@@ -51,8 +52,12 @@ same protocol over Streamable HTTP:
 ```
 
 It is stateless and stores nothing: your key arrives on the request, is
-forwarded to the API, and goes out of scope with the response. Running locally
-is still the stronger position, because then the key never leaves your machine.
+forwarded to the API, and goes out of scope with the response.
+
+Pick whichever suits you. The key is a Sourcevine key and reaches Sourcevine
+either way — hosted just adds one hop through our own front door — so this is
+a question of whether you want to run a process, not a security trade. Revoke
+a key from the dashboard and both routes stop working immediately.
 
 ## Tools
 
@@ -110,3 +115,12 @@ manage.py export_catalog --out ../sourcevine-mcp/src/catalog.json
 - [Documentation](https://sourcevine.io/docs/mcp/)
 - [API reference](https://sourcevine.io/apis/)
 - [Issues](https://github.com/Sourcevine/sourcevine-mcp/issues)
+
+## What is in here
+
+`src/index.ts` is the local stdio server this package installs.
+`src/http.ts` and `src/serve.ts` are the hosted endpoint at
+`mcp.sourcevine.io`. Both share the tool definitions in `src/server.ts` and the
+API client in `src/client.ts`, which is why they live together.
+
+How the hosted endpoint is deployed is not in this repo.
