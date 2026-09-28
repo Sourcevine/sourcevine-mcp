@@ -31,9 +31,20 @@
       "path": "/v1/tiktok/posts",
       "title": "TikTok Channel Videos API",
       "summary": "A page of recent public videos for a TikTok account, with a cursor.",
-      "credits": 2,
+      "credits": 1,
       "returnsList": true,
       "exampleUrl": "https://www.tiktok.com/@username"
+    },
+    {
+      "slug": "tiktok-comments",
+      "platform": "tiktok",
+      "action": "comments",
+      "path": "/v1/tiktok/comments",
+      "title": "TikTok Comments API",
+      "summary": "A page of public comments on a TikTok video, with a cursor.",
+      "credits": 1,
+      "returnsList": false,
+      "exampleUrl": "https://www.tiktok.com/@tiktok/video/7679101730352565535"
     },
     {
       "slug": "youtube-stats",
@@ -58,17 +69,6 @@
       "exampleUrl": "https://www.youtube.com/@channel"
     },
     {
-      "slug": "youtube-videos",
-      "platform": "youtube",
-      "action": "videos",
-      "path": "/v1/youtube/videos",
-      "title": "YouTube Channel Videos API",
-      "summary": "A page of recent public videos for a YouTube channel, with a cursor.",
-      "credits": 2,
-      "returnsList": true,
-      "exampleUrl": "https://www.youtube.com/@channel"
-    },
-    {
       "slug": "youtube-transcript",
       "platform": "youtube",
       "action": "transcript",
@@ -78,6 +78,61 @@
       "credits": 2,
       "returnsList": false,
       "exampleUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "slug": "youtube-comments",
+      "platform": "youtube",
+      "action": "comments",
+      "path": "/v1/youtube/comments",
+      "title": "YouTube Comments API",
+      "summary": "A page of public comments on a YouTube video, with a continuation cursor.",
+      "credits": 1,
+      "returnsList": false,
+      "exampleUrl": "https://www.youtube.com/watch?v=9wq3VHsL_bE"
+    },
+    {
+      "slug": "x-stats",
+      "platform": "x",
+      "action": "stats",
+      "path": "/v1/x/stats",
+      "title": "X (Twitter) Post Stats API",
+      "summary": "Views, likes, replies, retweets, quotes and bookmarks for a public post on X.",
+      "credits": 1,
+      "returnsList": false,
+      "exampleUrl": "https://x.com/X/status/2093829017128374366"
+    },
+    {
+      "slug": "x-profile",
+      "platform": "x",
+      "action": "profile",
+      "path": "/v1/x/profile",
+      "title": "X (Twitter) Profile API",
+      "summary": "Follower, following and post counts for a public X account.",
+      "credits": 1,
+      "returnsList": false,
+      "exampleUrl": "https://x.com/X"
+    },
+    {
+      "slug": "x-posts",
+      "platform": "x",
+      "action": "posts",
+      "path": "/v1/x/posts",
+      "title": "X (Twitter) Timeline API",
+      "summary": "A page of recent public posts from an X account, with a cursor.",
+      "credits": 1,
+      "returnsList": true,
+      "exampleUrl": "https://x.com/X"
+    },
+    {
+      "slug": "x-comments",
+      "platform": "x",
+      "action": "comments",
+      "path": "/v1/x/comments",
+      "title": "X (Twitter) Replies API",
+      "summary": "A page of public replies to a post on X, with a cursor.",
+      "credits": 1,
+      "returnsList": false,
+      "exampleUrl": "https://x.com/X/status/2093829017128374366"
     },
     {
       "slug": "instagram-stats",
@@ -108,9 +163,20 @@
       "path": "/v1/instagram/posts",
       "title": "Instagram Channel Posts API",
       "summary": "A page of recent public posts for an Instagram account, with a cursor.",
-      "credits": 3,
+      "credits": 4,
       "returnsList": true,
       "exampleUrl": "https://www.instagram.com/username"
+    },
+    {
+      "slug": "instagram-comments",
+      "platform": "instagram",
+      "action": "comments",
+      "path": "/v1/instagram/comments",
+      "title": "Instagram Comments API",
+      "summary": "A page of public comments on an Instagram post or reel, with a cursor.",
+      "credits": 8,
+      "returnsList": false,
+      "exampleUrl": "https://www.instagram.com/p/Dcn5O64y3xi/"
     }
   ]
 }

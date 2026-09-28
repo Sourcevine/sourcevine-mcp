@@ -63,14 +63,15 @@ a key from the dashboard and both routes stop working immediately.
 
 | Tool | Credits (live) |
 |---|---|
-| `tiktok_stats`, `tiktok_profile` | 1 |
-| `tiktok_posts` | 2 |
-| `youtube_stats`, `youtube_channel` | 1 |
-| `youtube_videos`, `youtube_transcript` | 2 |
+| `tiktok_stats`, `tiktok_profile`, `tiktok_posts`, `tiktok_comments` | 1 |
+| `youtube_stats`, `youtube_channel`, `youtube_comments` | 1 |
+| `youtube_transcript` | 2 |
+| `x_stats`, `x_profile`, `x_posts`, `x_comments` | 1 |
 | `instagram_stats`, `instagram_profile` | 2 |
-| `instagram_posts` | 3 |
+| `instagram_posts` | 4 |
+| `instagram_comments` | 8 |
 
-A cache hit costs **0** on all of them, and every result reports what it
+One credit is $0.001 of what the live read costs us upstream. A cache hit costs **0** on all of them, and every result reports what it
 actually cost as `creditsCharged`.
 
 The tool list is generated from the API catalog the backend exports, so a tool
