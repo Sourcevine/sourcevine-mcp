@@ -79,8 +79,12 @@ export class SourcevineClient {
       | null;
 
     if (!response.ok || body?.success === false) {
-      const code = body?.error?.code ?? `http_${response.status}`;
-      const message = body?.error?.message ?? `HTTP ${response.status}`;
+      // An upstream failure is a 503 carrying a typed availability, not an
+      // error object. Passing its status on is what tells an agent "retry
+      // later" rather than "your request is wrong".
+      const availability = body?.availability as { status?: string; reason?: string } | undefined;
+      const code = body?.error?.code ?? availability?.status ?? `http_${response.status}`;
+      const message = body?.error?.message ?? availability?.reason ?? `HTTP ${response.status}`;
       throw new SourcevineError(message, code);
     }
 

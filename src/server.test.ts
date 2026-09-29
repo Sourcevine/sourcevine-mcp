@@ -186,3 +186,43 @@ test('an unreachable host says so rather than throwing a bare TypeError', async 
     (e: unknown) => e instanceof SourcevineError && e.code === 'unreachable',
   );
 });
+
+test('every comments API offers a cursor, because it returns nextCursor', async () => {
+  const { impl } = stubFetch({ success: true, available: true, data: {} });
+  const server = buildServer(new SourcevineClient('k', 'https://x', impl));
+  const client = new Client({ name: 'test', version: '0' });
+  const [a, b] = InMemoryTransport.createLinkedPair();
+  await Promise.all([server.connect(b), client.connect(a)]);
+
+  const { tools } = await client.listTools();
+  const comments = tools.filter((t) => t.name.endsWith('_comments'));
+  assert.ok(comments.length >= 4);
+  for (const t of comments) {
+    assert.ok('cursor' in (t.inputSchema.properties ?? {}), `${t.name} cannot page`);
+  }
+  await client.close();
+});
+
+test('an upstream failure passes its availability status on, not a bare HTTP code', async () => {
+  const { impl } = stubFetch(
+    { success: true, available: false, data: null,
+      availability: { status: 'upstream_unavailable', reason: 'provider timed out' } },
+    { status: 503 },
+  );
+  await assert.rejects(
+    new SourcevineClient('k', 'https://x', impl).call(PROFILE, { url: 'https://www.tiktok.com/@a' }),
+    (e: SourcevineError) => e.code === 'upstream_unavailable' && e.message === 'provider timed out',
+  );
+});
+
+test('the server announces the package version', async () => {
+  const { readFileSync } = await import('node:fs');
+  const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const { impl } = stubFetch({ success: true, available: true, data: {} });
+  const server = buildServer(new SourcevineClient('k', 'https://x', impl));
+  const client = new Client({ name: 'test', version: '0' });
+  const [a, b] = InMemoryTransport.createLinkedPair();
+  await Promise.all([server.connect(b), client.connect(a)]);
+  assert.equal(client.getServerVersion()?.version, pkg.version);
+  await client.close();
+});

@@ -43,7 +43,7 @@
       "title": "TikTok Comments API",
       "summary": "A page of public comments on a TikTok video, with a cursor.",
       "credits": 1,
-      "returnsList": false,
+      "returnsList": true,
       "exampleUrl": "https://www.tiktok.com/@tiktok/video/7679101730352565535"
     },
     {
@@ -87,7 +87,7 @@
       "title": "YouTube Comments API",
       "summary": "A page of public comments on a YouTube video, with a continuation cursor.",
       "credits": 1,
-      "returnsList": false,
+      "returnsList": true,
       "exampleUrl": "https://www.youtube.com/watch?v=9wq3VHsL_bE"
     },
     {
@@ -131,7 +131,7 @@
       "title": "X (Twitter) Replies API",
       "summary": "A page of public replies to a post on X, with a cursor.",
       "credits": 1,
-      "returnsList": false,
+      "returnsList": true,
       "exampleUrl": "https://x.com/X/status/2093829017128374366"
     },
     {
@@ -175,7 +175,7 @@
       "title": "Instagram Comments API",
       "summary": "A page of public comments on an Instagram post or reel, with a cursor.",
       "credits": 8,
-      "returnsList": false,
+      "returnsList": true,
       "exampleUrl": "https://www.instagram.com/p/Dcn5O64y3xi/"
     }
   ]

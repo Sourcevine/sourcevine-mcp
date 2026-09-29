@@ -3,12 +3,18 @@
  * exports, so an API cannot exist as a route with no tool or a tool with no
  * route.
  */
+import { readFileSync } from 'node:fs';
+
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 
 import { APIS, type Api, SourcevineClient, SourcevineError, toolName } from './client.js';
 
-export const VERSION = '0.1.0';
+/** Read from package.json (always in the tarball, one level above dist/) so a
+ *  release cannot ship announcing the previous version. */
+export const VERSION: string = JSON.parse(
+  readFileSync(new URL('../package.json', import.meta.url), 'utf8'),
+).version;
 
 function description(api: Api): string {
   const cost = `${api.credits} credit${api.credits === 1 ? '' : 's'} on a live read, 0 on a cache hit`;
