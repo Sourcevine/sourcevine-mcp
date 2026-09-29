@@ -78,7 +78,7 @@ export function buildServer(client: SourcevineClient): McpServer {
                 {
                   type: 'text' as const,
                   text: JSON.stringify(
-                    { available: false, availability: result.availability, creditsCharged: 0 },
+                    { available: false, availability: result.availability, creditsCharged: result.creditsCharged },
                     null,
                     2,
                   ),

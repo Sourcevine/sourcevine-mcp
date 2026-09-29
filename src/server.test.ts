@@ -120,7 +120,7 @@ test('a deleted resource is a normal result, not an error', async () => {
     available: false,
     data: null,
     availability: { status: 'not_found', reason: null },
-  });
+  }, { headers: { 'X-Credits-Charged': '1' } });
   const server = buildServer(new SourcevineClient('k', 'https://x', impl));
   const client = new Client({ name: 'test', version: '0' });
   const [a, b] = InMemoryTransport.createLinkedPair();
@@ -133,7 +133,8 @@ test('a deleted resource is a normal result, not an error', async () => {
   assert.notEqual(res.isError, true, 'an agent told "error" here retries a deleted post forever');
   const payload = JSON.parse(res.content[0].text);
   assert.equal(payload.available, false);
-  assert.equal(payload.creditsCharged, 0);
+  // Not found is charged like any lookup (2026-09-29); report the header, never a hardcoded 0.
+  assert.equal(payload.creditsCharged, 1);
   await client.close();
 });
 

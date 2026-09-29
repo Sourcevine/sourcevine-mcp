@@ -83,9 +83,10 @@ cannot exist without a route behind it.
 agent that passes `cache: false` on every call turns a free re-read into a
 billed one for nothing.
 
-**Unavailable is not an error.** A private, deleted or unsupported resource
-comes back as a normal result with `available: false` and no charge, so an
-agent does not sit in a retry loop on a post that no longer exists.
+**Unavailable is not an error.** A private or deleted resource comes back as a
+normal result with `available: false`, so an agent does not sit in a retry loop
+on a post that no longer exists. It is charged like any lookup; an upstream
+failure is not.
 
 **Use a separate key.** Give the server its own key on its own project. Then
 you can see what the assistant spent and revoke it without touching anything
