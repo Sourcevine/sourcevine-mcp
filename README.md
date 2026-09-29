@@ -71,7 +71,7 @@ a key from the dashboard and both routes stop working immediately.
 | `instagram_posts` | 4 |
 | `instagram_comments` | 8 |
 
-One credit is $0.001 of what the live read costs us upstream. A cache hit costs **0** on all of them, and every result reports what it
+A cache hit costs **0** on all of them, and every result reports what it
 actually cost as `creditsCharged`.
 
 The tool list is generated from the API catalog the backend exports, so a tool
