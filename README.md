@@ -85,7 +85,7 @@ billed one for nothing.
 
 **Unavailable is not an error.** A private or deleted resource comes back as a
 normal result with `available: false`, so an agent does not sit in a retry loop
-on a post that no longer exists. It is charged like any lookup; an upstream
+on a post that no longer exists. It is charged like any lookup; a retrieval
 failure is not.
 
 **Use a separate key.** Give the server its own key on its own project. Then
@@ -94,7 +94,17 @@ else. An assistant deciding to check two hundred profiles is a normal thing for
 an assistant to do.
 
 **No contact data.** No bios, emails, phone numbers, postal addresses or
-login-walled data — enforced server-side by an allowlist, not by this package.
+private-account data or restricted content — enforced server-side by an allowlist,
+not by this package. A platform sign-in prompt alone does not make public content private.
+
+## Agent skills
+
+The [free Sourcevine agent skills](https://sourcevine.io/skills/) provide three
+focused workflows: Campaign Report, Competitor Content Brief, and Audience
+Questions & Objections. Each sets a scope and credit budget and keeps source
+evidence in reusable files. Install the skills in a client that supports local
+skills after connecting MCP. Skill installation is free; Sourcevine API usage
+consumes credits. [Setup guide](https://sourcevine.io/docs/skills/).
 
 ## Development
 

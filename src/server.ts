@@ -26,7 +26,7 @@ function description(api: Api): string {
     shape,
     'Fields use this platform\'s own names.',
     `Cost: ${cost}.`,
-    'Public data only: no bios, contact details or login-walled data. Read-only.',
+    'Public data only: no bios, contact details, private-account data or restricted content. A platform sign-in prompt alone does not make public content private. Read-only.',
   ].join(' ');
 }
 
@@ -37,7 +37,7 @@ function inputSchema(api: Api) {
       .boolean()
       .optional()
       .describe(
-        'Defaults to true. Only pass false when you specifically need a live read — it always costs credits, where a cache hit is free.',
+        'Defaults to true. Pass false for a fresh read. Live lookups may consume credits; cache hits, empty results and retrieval failures are free.',
       ),
   };
   if (!api.returnsList) return base;
