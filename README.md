@@ -71,17 +71,13 @@ a key from the dashboard and both routes stop working immediately.
 | `instagram_posts` | 4 |
 | `instagram_comments` | 8 |
 
-A cache hit costs **0** on all of them, and every result reports what it
-actually cost as `creditsCharged`.
+Empty results and retrieval failures cost **0**, and every result reports what
+it actually cost as `creditsCharged`.
 
 The tool list is generated from the API catalog the backend exports, so a tool
 cannot exist without a route behind it.
 
 ## Things worth knowing
-
-**Leave `cache` alone.** It defaults to cached, and a cache hit is free. An
-agent that passes `cache: false` on every call turns a free re-read into a
-billed one for nothing.
 
 **Unavailable is not an error.** A private or deleted resource comes back as a
 normal result with `available: false`, so an agent does not sit in a retry loop

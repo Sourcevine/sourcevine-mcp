@@ -33,7 +33,6 @@ export interface CallResult {
 
 export interface CallOptions {
   url: string;
-  cache?: boolean;
   cursor?: string;
   limit?: number;
 }
@@ -47,10 +46,6 @@ export class SourcevineClient {
 
   async call(api: Api, options: CallOptions): Promise<CallResult> {
     const params = new URLSearchParams({ url: options.url });
-    // Only sent when explicitly false. The default is cached, and a cache hit
-    // costs nothing — an agent that sends cache=true on every call would turn
-    // a free re-read into a billed one for no gain.
-    if (options.cache === false) params.set('cache', 'false');
     if (options.cursor) params.set('cursor', options.cursor);
     if (options.limit) params.set('limit', String(options.limit));
 

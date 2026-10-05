@@ -17,7 +17,7 @@ export const VERSION: string = JSON.parse(
 ).version;
 
 function description(api: Api): string {
-  const cost = `${api.credits} credit${api.credits === 1 ? '' : 's'} on a live read, 0 on a cache hit`;
+  const cost = `${api.credits} credit${api.credits === 1 ? '' : 's'} a call; empty results and retrieval failures are free`;
   const shape = api.returnsList
     ? 'Returns a page of items plus nextCursor.'
     : 'Returns one object.';
@@ -33,12 +33,6 @@ function description(api: Api): string {
 function inputSchema(api: Api) {
   const base = {
     url: z.string().describe(`A public URL, for example ${api.exampleUrl}`),
-    cache: z
-      .boolean()
-      .optional()
-      .describe(
-        'Defaults to true. Pass false for a fresh read. Live lookups may consume credits; cache hits, empty results and retrieval failures are free.',
-      ),
   };
   if (!api.returnsList) return base;
   return {
@@ -70,7 +64,6 @@ export function buildServer(client: SourcevineClient): McpServer {
         try {
           const result = await client.call(api, {
             url: String(args.url),
-            cache: args.cache as boolean | undefined,
             cursor: args.cursor as string | undefined,
             limit: args.limit as number | undefined,
           });

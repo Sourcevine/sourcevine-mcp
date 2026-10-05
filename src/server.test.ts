@@ -72,7 +72,7 @@ test('the description states the cost', async () => {
   await Promise.all([server.connect(b), client.connect(a)]);
 
   const tool = (await client.listTools()).tools.find((t) => t.name === 'youtube_transcript')!;
-  assert.match(tool.description!, /2 credits on a live read, 0 on a cache hit/);
+  assert.match(tool.description!, /2 credits a call/);
   await client.close();
 });
 
@@ -91,19 +91,12 @@ test('the key is sent as a header, never a query parameter', async () => {
   );
 });
 
-// ── cache defaults ──────────────────────────────────────────────────────────
+// ── no cache control ────────────────────────────────────────────────────────
 
-test('cache is left alone unless explicitly disabled', async () => {
+test('a call never sends a cache parameter', async () => {
   const { impl, calls } = stubFetch({ success: true, available: true, data: {} });
-  const client = new SourcevineClient('k', 'https://x', impl);
-  await client.call(PROFILE, { url: 'u' });
-  assert.ok(!calls[0].url.includes('cache='), 'sent cache= when it did not need to');
-
-  await client.call(PROFILE, { url: 'u', cache: true });
-  assert.ok(!calls[1].url.includes('cache='), 'cache:true should send nothing — the default is cached');
-
-  await client.call(PROFILE, { url: 'u', cache: false });
-  assert.ok(calls[2].url.includes('cache=false'));
+  await new SourcevineClient('k', 'https://x', impl).call(PROFILE, { url: 'u' });
+  assert.ok(!calls[0].url.includes('cache='));
 });
 
 test('list APIs pass a cursor through', async () => {
