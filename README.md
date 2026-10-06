@@ -64,7 +64,7 @@ a key from the dashboard and both routes stop working immediately.
 | Tool | Credits |
 |---|---|
 | `tiktok_stats`, `tiktok_profile`, `tiktok_posts`, `tiktok_comments` | 1 |
-| `youtube_stats`, `youtube_channel`, `youtube_comments` | 1 |
+| `youtube_stats`, `youtube_channel`, `youtube_videos`, `youtube_comments` | 1 |
 | `youtube_transcript` | 2 |
 | `x_stats`, `x_profile`, `x_posts`, `x_comments` | 1 |
 | `instagram_stats`, `instagram_profile` | 2 |

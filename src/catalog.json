@@ -69,6 +69,17 @@
       "exampleUrl": "https://www.youtube.com/@channel"
     },
     {
+      "slug": "youtube-videos",
+      "platform": "youtube",
+      "action": "videos",
+      "path": "/v1/youtube/videos",
+      "title": "YouTube Channel Videos API",
+      "summary": "A page of recent public videos for a YouTube channel, with a cursor.",
+      "credits": 1,
+      "returnsList": true,
+      "exampleUrl": "https://www.youtube.com/@YouTube"
+    },
+    {
       "slug": "youtube-transcript",
       "platform": "youtube",
       "action": "transcript",
