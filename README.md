@@ -1,8 +1,8 @@
 # @sourcevine/mcp
 
 An MCP server for the [Sourcevine](https://sourcevine.io) public social data
-APIs. Gives an assistant one tool per named API — TikTok, Instagram and YouTube
-stats, profiles, recent posts and YouTube transcripts.
+APIs. Gives an assistant one tool per named API — TikTok, Instagram, YouTube,
+X and Facebook stats, profiles, recent posts, comments and YouTube transcripts.
 
 Read-only. Nothing here posts, follows, messages or changes anything on any
 platform, and every tool is annotated `readOnlyHint` so a client can skip a
@@ -61,7 +61,7 @@ a key from the dashboard and both routes stop working immediately.
 
 ## Tools
 
-| Tool | Credits (live) |
+| Tool | Credits |
 |---|---|
 | `tiktok_stats`, `tiktok_profile`, `tiktok_posts`, `tiktok_comments` | 1 |
 | `youtube_stats`, `youtube_channel`, `youtube_comments` | 1 |
@@ -70,6 +70,7 @@ a key from the dashboard and both routes stop working immediately.
 | `instagram_stats`, `instagram_profile` | 2 |
 | `instagram_posts` | 4 |
 | `instagram_comments` | 8 |
+| `facebook_profile`, `facebook_stats` | 1 |
 
 Empty results and retrieval failures cost **0**, and every result reports what
 it actually cost as `creditsCharged`.

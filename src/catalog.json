@@ -177,6 +177,28 @@
       "credits": 8,
       "returnsList": true,
       "exampleUrl": "https://www.instagram.com/p/Dcn5O64y3xi/"
+    },
+    {
+      "slug": "facebook-profile",
+      "platform": "facebook",
+      "action": "profile",
+      "path": "/v1/facebook/profile",
+      "title": "Facebook Profile API",
+      "summary": "Exact follower count for a public Facebook Page or personal profile; a Page also returns its name, category and verified badge.",
+      "credits": 1,
+      "returnsList": false,
+      "exampleUrl": "https://www.facebook.com/NASA"
+    },
+    {
+      "slug": "facebook-stats",
+      "platform": "facebook",
+      "action": "stats",
+      "path": "/v1/facebook/stats",
+      "title": "Facebook Post Stats API",
+      "summary": "Reactions, comments, shares, views and plays for a public Facebook post, video or reel, by a Page or a person.",
+      "credits": 1,
+      "returnsList": false,
+      "exampleUrl": "https://www.facebook.com/NASA/posts/1644708777024492"
     }
   ]
 }
