@@ -17,7 +17,7 @@ export const VERSION: string = JSON.parse(
 ).version;
 
 function description(api: Api): string {
-  const cost = `${api.credits} credit${api.credits === 1 ? '' : 's'} a call; empty results and retrieval failures are free`;
+  const cost = `${api.credits} credit${api.credits === 1 ? '' : 's'} a call, including deleted, private or empty results; retrieval failures are free`;
   const shape = api.returnsList
     ? 'Returns a page of items plus nextCursor.'
     : 'Returns one object.';

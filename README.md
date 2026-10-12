@@ -72,8 +72,9 @@ a key from the dashboard and both routes stop working immediately.
 | `instagram_comments` | 8 |
 | `facebook_profile`, `facebook_stats` | 1 |
 
-Empty results and retrieval failures cost **0**, and every result reports what
-it actually cost as `creditsCharged`.
+A deleted, private or empty result is charged like any lookup. Retrieval
+failures cost **0**, and every result reports what it actually cost as
+`creditsCharged`.
 
 The tool list is generated from the API catalog the backend exports, so a tool
 cannot exist without a route behind it.
