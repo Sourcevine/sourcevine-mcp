@@ -56,7 +56,10 @@ async function readBody(req: http.IncomingMessage): Promise<unknown> {
   return JSON.parse(Buffer.concat(chunks).toString('utf8'));
 }
 
-export function createHttpServer(baseUrl: string = BASE_URL): http.Server {
+export function createHttpServer(
+  baseUrl: string = BASE_URL,
+  onError?: (error: unknown) => void,
+): http.Server {
   return http.createServer(async (req, res) => {
     const url = new URL(req.url || '/', 'http://localhost');
 
@@ -108,6 +111,7 @@ export function createHttpServer(baseUrl: string = BASE_URL): http.Server {
       // Deliberately not echoing the error: it can quote request internals,
       // and this endpoint is public.
       process.stderr.write(`mcp request failed [${randomUUID()}]: ${(error as Error).message}\n`);
+      onError?.(error);
       if (!res.headersSent) send(res, 500, rpcError(null, -32603, 'Internal error.'));
     }
   });

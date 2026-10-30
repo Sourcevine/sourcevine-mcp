@@ -30,6 +30,7 @@
     "zod": "^3.25.0"
   },
   "devDependencies": {
+    "@sentry/node": "^10.78.0",
     "@types/node": "^22.10.0",
     "typescript": "^5.7.2"
   },
